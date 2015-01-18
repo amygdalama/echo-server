@@ -23,10 +23,11 @@ class Echo(Protocol):
 
 class EchoFactory(Factory):
 
-    protocol = Echo
-
     def __init__(self):
         self.numProtocols = 0
+
+    def buildProtocol(self, addr):
+        return Echo(self)
 
 
 if __name__ == '__main__':
